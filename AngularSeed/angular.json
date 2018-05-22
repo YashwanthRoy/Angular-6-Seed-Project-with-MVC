@@ -1,0 +1,81 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "defaultProject": "AngularSeed",
+  "newProjectRoot": "projects",
+  "projects": {
+    "AngularSeed": {
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "Scripts/dist/app",
+            "index": "Scripts/index.html",
+            "main": "Scripts/main.ts",
+            "polyfills": "Scripts/polyfills.ts",
+            "tsConfig": "Scripts/tsconfig.app.json",
+            "assets": [
+              "Scripts/assets"
+            ],
+            "styles": [
+              "Scripts/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "Scripts/environments/environment.ts",
+                  "with": "Scripts/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "AngularSeed:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "AngularSeed:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "AngularSeed:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "Scripts/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "",
+      "schematics": {},
+      "sourceRoot": "Scripts"
+    }
+  },
+  "version": 1
+}
